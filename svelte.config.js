@@ -7,7 +7,10 @@ import svg from "vite-plugin-svgstring";
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+            pages: "docs",
+            assets: "docs"
+        }),
 		paths : {
 			// base: dev ? "" : "/<repository-name"
 			base: "",
@@ -27,7 +30,7 @@ const config = {
 		},
 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
+		// target: '#svelte'
 	}
 };
 

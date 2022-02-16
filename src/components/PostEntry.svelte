@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import Icon from '$components/Icon.svelte';
 
 	export let postInfo;
@@ -8,7 +9,7 @@
 	<Icon name="pixelArrow" size="3rem" class="post-arrow" />
 	<div class="post-info-content">
 		<p class="post-topic">{postInfo.topic}</p>
-		<a href={postInfo.url} class="highlight"><h2 class="post-title">{postInfo.title}</h2></a>
+		<a href="{base + postInfo.url}" rel="external" class="highlight"><h2 class="post-title">{postInfo.title}</h2></a>
 	</div>
 </div>
 
