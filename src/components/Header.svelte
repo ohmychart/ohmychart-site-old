@@ -26,6 +26,13 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		align-items: center;
+	}
+
+	@media (max-width: 500px) {
+		#main-header {
+			padding: var(--main-header-padding-mobile);
+		}
 	}
 
 	#main-header-border {

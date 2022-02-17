@@ -8,6 +8,7 @@
     --main-header-height: 5rem;
     --main-header-border-height: 80px;
     --main-header-padding: 1.5rem 2rem;
+    --main-header-padding-mobile: 16px 12px;
 
     --main-column-width: 800px;
 }
