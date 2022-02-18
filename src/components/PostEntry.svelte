@@ -46,7 +46,8 @@
 
 	@media (max-width: 500px) {
 		.post-topic {
-			font-size: 0.85rem;
+			font-size: 0.8rem;
+			line-height: 1rem;
 		}
 	}
 
@@ -59,7 +60,7 @@
 
 	@media (max-width: 500px) {
 		.post-title {
-			font-size: 1rem;
+			font-size: 1.15rem;
 			line-height: 1.25rem;
 		}
 	}

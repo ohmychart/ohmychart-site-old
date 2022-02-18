@@ -1,6 +1,7 @@
 <script>
 	import '$styles/app.css';
 	import { base } from '$app/paths';
+	import { dev } from '$app/env';
 	import Header from '$components/Header.svelte';
 	import Footer from '$components/Footer.svelte';
 </script>
@@ -16,6 +17,20 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="{base}/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="{base}/favicon-16x16.png" />
 	<link rel="manifest" href="{base}/site.webmanifest" />
+	
+	{#if !dev}
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-68TDHFEGEZ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-68TDHFEGEZ');
+	</script>
+	{/if}
 </svelte:head>
 
 <Header />
