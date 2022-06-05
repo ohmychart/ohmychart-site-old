@@ -6,7 +6,7 @@
   let isHovered = false;
 </script>
 
-<a href={base + postInfo.url}>
+<a href={base + postInfo.url} rel="external">
   <div
     class="post-entry"
     on:mouseenter={() => (isHovered = true)}
