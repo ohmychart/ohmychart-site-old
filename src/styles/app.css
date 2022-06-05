@@ -1,25 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&&family=IBM+Plex+Sans:wght@400;500&display=swap');
-
 :root {
-    --color-dark-primary: #212121;
-    --color-white-primary: #fff;
-    --color-teal-primary: #26a69a;
+  --color-dark-primary: #212121;
+  --color-white-primary: #fff;
+  --color-teal-primary: #26a69a;
 
-    --main-header-height: 5rem;
-    --main-header-border-height: 80px;
-    --main-header-padding: 1.5rem 2rem;
-    --main-header-padding-mobile: 16px 12px;
+  --main-header-height: 5rem;
+  --main-header-border-height: 80px;
+  --main-header-padding: 1.5rem 2rem;
+  --main-header-padding-mobile: 16px 12px;
 
-    --main-column-width: 800px;
+  --main-column-width: 800px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
-    background-color: var(--color-dark-primary);
-    color: var(--color-white-primary);
-    margin: 0;
-    font-family: 'IBM Plex Mono', monospace;
-}
-
-header {
-    margin-bottom: 3rem;
+  box-sizing: border-box;
+  background-color: var(--color-dark-primary);
+  color: var(--color-white-primary);
+  font-family: "PT Sans", sans-serif;
 }

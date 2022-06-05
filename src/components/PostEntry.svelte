@@ -1,93 +1,83 @@
 <script>
-	import { base } from '$app/paths';
-	import Icon from '$components/Icon.svelte';
+  import { base } from "$app/paths";
 
-	export let postInfo;
+  export let postInfo;
+
+  let isHovered = false;
 </script>
 
-<div class="post-info">
-	<Icon name="pixelArrow" size="3rem" class="post-arrow" />
-	<div class="post-info-content">
-		<p class="post-topic">{postInfo.topic}</p>
-		<a href={base + postInfo.url} rel="external" class="highlight"
-			><h2 class="post-title">{postInfo.title}</h2></a
-		>
-	</div>
-</div>
+<a href={base + postInfo.url}>
+  <div
+    class="post-entry"
+    on:mouseenter={() => (isHovered = true)}
+    on:mouseleave={() => (isHovered = false)}
+  >
+    <div class="post-entry__content">
+      {#if !isHovered}
+        <h2  class="post-entry__title">
+          {postInfo.title}
+        </h2>
+      {:else}
+        <p  class="post-entry__description">
+          {postInfo.description}
+        </p>
+      {/if}
+    </div>
+    <div class="post-entry__cover">
+      {@html postInfo.cover}
+    </div>
+  </div>
+</a>
 
 <style>
-	.post-info {
-		display: flex;
-		flex-flow: row nowrap;
-		padding: 1.5rem;
-		align-items: center;
-	}
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-	.post-info-content {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding-left: 1.5rem;
-	}
+  .post-entry {
+    outline: 2px solid var(--color-teal-primary);
+    background-color: var(--color-dark-primary);
+    height: 100%;
+    position: relative;
+    min-height: 245px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    transition: all 0.4s;
+  }
 
-	@media (max-width: 500px) {
-		.post-info-content {
-			padding-left: 0.85rem;
-		}
-	}
+  .post-entry__cover {
+    fill: var(--color-teal-primary);
+    stroke: var(--color-teal-primary);
+    stroke-width: 2px;
+    width: 100%;
+  }
 
-	.post-topic {
-		font-weight: 400;
-		font-size: 1rem;
-		color: var(--color-white-primary);
-		margin: 0;
-		padding: 0 8px;
-	}
+  .post-entry:hover {
+    background-color: var(--color-teal-primary);
+  }
 
-	@media (max-width: 500px) {
-		.post-topic {
-			font-size: 0.8rem;
-			line-height: 1rem;
-		}
-	}
+  .post-entry__content h2.post-entry__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-white-primary);
+    margin: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-	.post-title {
-		font-weight: 600;
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-		margin: 0;
-	}
+  .post-entry__description {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    color: var(--color-dark-primary);
+    margin: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-	@media (max-width: 500px) {
-		.post-title {
-			font-size: 1.15rem;
-			line-height: 1.25rem;
-		}
-	}
-
-	a.highlight {
-		text-decoration: none;
-		color: var(--color-teal-primary);
-		background: linear-gradient(
-			to bottom,
-			var(--color-teal-primary) 0%,
-			var(--color-teal-primary) 100%
-		);
-		background-position: 0 100%;
-		background-repeat: repeat-x;
-		background-size: 4px 0px;
-		transition: background-size 0.2s;
-		padding: 0 8px;
-	}
-
-	@media (min-width: 500px) {
-		a.highlight:hover {
-			background-size: 4px 6rem;
-			color: var(--color-white-primary);
-		}
-	}
-
-	:global(.post-arrow) {
-		color: var(--color-white-primary);
-	}
 </style>

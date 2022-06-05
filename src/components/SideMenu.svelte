@@ -1,105 +1,144 @@
 <script>
-	import { base } from '$app/paths';
-	import Icon from '$components/Icon.svelte';
-	export let open = false;
+  import { fade, fly } from "svelte/transition";
+  import email from "$svg/email.svg";
+  import github from "$svg/github.svg";
+  import twitter from "$svg/twitter.svg";
+  import { showSideMenu } from "$stores/sideMenu.js";
+
+  function closeMenu() {
+    $showSideMenu = false;
+    window.document.body.classList.toggle("no-scroll");
+    window.document.body.style.paddingRight = null;
+  }
 </script>
 
-<aside class:open>
-	<section>
-		<h2>Про этот сайт</h2>
-		<p>
-			Привет, меня зовут Дмитрий и на этом сайте я публикую визуализации и инфографику на
-			экономические, исторические и социальные темы.
-		</p>
-	</section>
-	<section>
-		<h2>Для связи</h2>
-		<p><a href="mailto:dmitrii@ohmychart.com" class="highlight">dmitrii@ohmychart.com</a></p>
-		<p><a href="https://twitter.com/ohmychart" class="highlight">Twitter</a></p>
-	</section>
-	<a href="{base}/" on:click={() => (open = !open)} id="closeMenuLink">
-		<Icon name="x" size="2.5rem" id="closeMenuIcon" />
-	</a>
-</aside>
+{#if $showSideMenu}
+  <aside class="side-menu">
+    <div class="side-menu__background" on:click={closeMenu} transition:fade>
+      <div
+        class="side-menu__foreground"
+        on:click|stopPropagation
+        transition:fly={{ x: 200, duration: 400 }}
+      >
+        <button
+          class="side-menu__close-btn"
+          aria-label="Close About"
+          on:click={closeMenu}>&times;</button
+        >
+        <section>
+          <h2 class="section__header"><span>What is this site about?</span></h2>
+          <p>
+            OhMyChart! is a data-driven visualizations, infographics and visual
+            stories focused on history and economy.
+          </p>
+          <p>
+            <span class="side-menu__contacts-icon"
+              ><a href="mailto:dmitrii@ohmychart.com">{@html email}</a></span
+            >
+            <span class="side-menu__contacts-icon"
+              ><a href="https://github.com/ohmychart">{@html github}</a></span
+            >
+            <span class="side-menu__contacts-icon"
+              ><a href="https://twitter.com/ohmychart">{@html twitter}</a></span
+            >
+          </p>
+        </section>
+      </div>
+    </div>
+  </aside>
+{/if}
 
 <style>
-	aside {
-		position: fixed;
-		top: 0;
-		right: 0;
-		height: 100%;
-		width: calc(var(--main-column-width) * 0.8);
-		max-width: 100vw;
-		z-index: 999;
-		background-color: var(--color-teal-primary);
+  .side-menu {
+    z-index: 999;
+  }
+  .side-menu__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(33, 33, 33, 0.65);
+    z-index: 1000;
+    overflow: auto;
+  }
+  .side-menu__foreground {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--color-teal-primary);
+    z-index: 1001;
+    overflow: auto;
+  }
+  .side-menu__close-btn {
+    position: absolute;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    color: var(--color-dark-primary);
+    cursor: pointer;
+    top: 1rem;
+    right: 1rem;
+    padding: 2px 8px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 500;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s;
+  }
+  .side-menu__close-btn:hover {
+    color: var(--color-white-primary);
+    background-color: var(--color-dark-primary);
+  }
+  .side-menu__contacts-icon {
+    width: 36px;
+    line-height: 0;
+    margin: 8px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+  .side-menu__contacts-icon a {
+    fill: var(--color-dark-primary);
+    transition: all 0.4s;
+  }
+  .side-menu__contacts-icon:hover a {
+    fill: var(--color-white-primary);
+  }
+  .side-menu__contacts-icon:hover {
+    transform: scale(1.1);
+  }
 
-		transition: transform 0.3s ease-in-out;
-		transform: translate(100%, 0);
-	}
+  :global(".no-scroll") {
+    overflow: hidden;
+  }
 
-	section {
-		padding: var(--main-header-padding);
-	}
+  section {
+    padding: 3rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 400;
+    color: var(--color-white-primary);
+  }
 
-	h2 {
-		font-weight: 600;
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-		margin: 1rem 0 0 0;
-		color: var(--color-dark-primary);
-	}
+  .section__header {
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    line-height: 3rem;
+    font-weight: 600;
+    margin: 0 0 5rem 0;
+	color: var(--color-dark-primary);
+  }
 
-	p {
-		font-family: 'IBM Plex Sans', serif;
-		font-size: 1.15rem;
-		line-height: 1.5rem;
-		color: var(--color-white-primary);
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	.highlight {
-		background: linear-gradient(
-			120deg,
-			var(--color-dark-primary) 0%,
-			var(--color-dark-primary) 100%
-		);
-		background-repeat: no-repeat;
-		background-size: 100% 30%;
-		background-position: 0 95%;
-		color: var(--color-white-primary);
-		font-weight: 500;
-		padding: 2px 0px;
-		transition: all 0.2s ease-in-out;
-	}
-	.highlight:hover {
-		background-size: 100% 100%;
-		color: var(--color-teal-primary);
-	}
-
-	#closeMenuLink {
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 2.5rem;
-		padding: 16px;
-	}
-
-	.open {
-		transform: translate(0, 0);
-	}
-
-	:global(#closeMenuIcon) {
-		stroke: var(--color-white-primary);
-		background-color: var(--color-dark-primary);
-		transition: all 0.4s ease-in-out;
-	}
-
-	:global(#closeMenuIcon:hover) {
-		stroke: var(--color-teal-primary);
-		background-color: var(--color-white-primary);
-		transform: scale(1.1);
-	}
+  section p {
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    text-align: left;
+    margin: 0 auto 5rem auto;
+  }
 </style>
