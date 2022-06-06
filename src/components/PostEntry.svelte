@@ -1,9 +1,10 @@
 <script>
   import { base } from "$app/paths";
-
+  import { contentWidth } from "$stores/window.js";
   export let postInfo;
 
   let isHovered = false;
+  $: isMobileView = $contentWidth < 480;
 </script>
 
 <a href={base + postInfo.url} rel="external">
@@ -13,12 +14,11 @@
     on:mouseleave={() => (isHovered = false)}
   >
     <div class="post-entry__content">
-      {#if !isHovered}
-        <h2  class="post-entry__title">
-          {postInfo.title}
-        </h2>
-      {:else}
-        <p  class="post-entry__description">
+      <h2 class="post-entry__title">
+        {postInfo.title}
+      </h2>
+      {#if isHovered && !isMobileView}
+        <p class="post-entry__description">
           {postInfo.description}
         </p>
       {/if}
@@ -45,6 +45,12 @@
     align-items: flex-end;
     cursor: pointer;
     transition: all 0.4s;
+
+    background-image: radial-gradient(#616161 10%, var(--color-dark-primary) 10%);
+    background-position: 0 0;
+    background-size: 10px 10px;
+    height: 10px;
+    width: 100%;
   }
 
   .post-entry__cover {
@@ -54,8 +60,10 @@
     width: 100%;
   }
 
-  .post-entry:hover {
-    background-color: var(--color-teal-primary);
+  @media (min-width: 480px) {
+    .post-entry:hover {
+      background-color: var(--color-teal-primary);
+    }
   }
 
   .post-entry__content h2.post-entry__title {
@@ -64,6 +72,7 @@
     font-weight: 400;
     text-transform: uppercase;
     color: var(--color-white-primary);
+    background-color: var(--color-dark-primary);
     margin: 1.5rem;
     position: absolute;
     top: 0;
@@ -74,10 +83,18 @@
     font-size: 1.75rem;
     line-height: 2.25rem;
     color: var(--color-dark-primary);
-    margin: 1.5rem;
+    background-color: var(--color-teal-primary);
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
     position: absolute;
     top: 0;
     left: 0;
   }
 
+  @media (max-width: 480px) {
+    .post-entry__description {
+      display: none;
+    }
+  }
 </style>

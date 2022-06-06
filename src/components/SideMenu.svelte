@@ -14,11 +14,11 @@
 
 {#if $showSideMenu}
   <aside class="side-menu">
-    <div class="side-menu__background" on:click={closeMenu} transition:fade>
+    <div class="side-menu__background" on:click={closeMenu} transition:fade|local>
       <div
         class="side-menu__foreground"
         on:click|stopPropagation
-        transition:fly={{ x: 200, duration: 400 }}
+        transition:fly={{ x: 200, duration: 400}}
       >
         <button
           class="side-menu__close-btn"
@@ -49,9 +49,7 @@
 {/if}
 
 <style>
-  .side-menu {
-    z-index: 999;
-  }
+
   .side-menu__background {
     position: fixed;
     top: 0;
@@ -70,8 +68,8 @@
     width: 100%;
     max-width: 600px;
     background-color: var(--color-teal-primary);
-    z-index: 1001;
     overflow: auto;
+    
   }
   .side-menu__close-btn {
     position: absolute;
@@ -112,10 +110,6 @@
   }
   .side-menu__contacts-icon:hover {
     transform: scale(1.1);
-  }
-
-  :global(".no-scroll") {
-    overflow: hidden;
   }
 
   section {

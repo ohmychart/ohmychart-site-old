@@ -3,10 +3,12 @@
   --color-white-primary: #fff;
   --color-teal-primary: #26a69a;
 
-  --main-header-height: 5rem;
+  --main-header-height: 10rem;
+  --main-header-height-mobile: 7rem;
   --main-header-border-height: 80px;
+  --main-header-border-height-mobile: 40px;
   --main-header-padding: 1.5rem 2rem;
-  --main-header-padding-mobile: 16px 12px;
+  --main-header-padding-mobile: 12px;
 
   --main-column-width: 800px;
 }
@@ -23,7 +25,11 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: var(--color-dark-primary);
+  background-color: var(--color-teal-primary);
   color: var(--color-white-primary);
   font-family: "PT Sans", sans-serif;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
