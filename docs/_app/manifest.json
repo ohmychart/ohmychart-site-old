@@ -1,10 +1,10 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-3709cd58.js",
+    "file": "start-0b532aea.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-306961a8.js",
+      "_vendor-ac6bae7f.js",
       "_paths-4b3c6e7e.js"
     ],
     "dynamicImports": [
@@ -14,44 +14,52 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-696c64a9.js",
+    "file": "pages/__layout.svelte-34f30d9b.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-306961a8.js",
-      "_paths-4b3c6e7e.js"
+      "_vendor-ac6bae7f.js",
+      "_paths-4b3c6e7e.js",
+      "_window-52823017.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-9ae70fcf.css"
+      "assets/pages/__layout.svelte-56866153.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-7325e280.js",
+    "file": "error.svelte-fb9e1f72.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-306961a8.js"
+      "_vendor-ac6bae7f.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-bd52af68.js",
+    "file": "pages/index.svelte-c293dd0f.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-306961a8.js",
-      "_paths-4b3c6e7e.js"
+      "_vendor-ac6bae7f.js",
+      "_paths-4b3c6e7e.js",
+      "_window-52823017.js"
     ],
     "css": [
-      "assets/pages/index.svelte-92aa5ded.css"
+      "assets/pages/index.svelte-aae63b0e.css"
     ]
   },
-  "_vendor-306961a8.js": {
-    "file": "chunks/vendor-306961a8.js"
+  "_vendor-ac6bae7f.js": {
+    "file": "chunks/vendor-ac6bae7f.js"
   },
   "_paths-4b3c6e7e.js": {
     "file": "chunks/paths-4b3c6e7e.js"
+  },
+  "_window-52823017.js": {
+    "file": "chunks/window-52823017.js",
+    "imports": [
+      "_vendor-ac6bae7f.js"
+    ]
   }
 }
