@@ -87,7 +87,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.4s;
+    transition: all 0.4s ease-in;
   }
   .side-menu__close-btn:hover {
     color: var(--color-white-primary);

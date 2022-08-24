@@ -27,7 +27,7 @@
     max-width: var(--main-column-width);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 3rem;
+    row-gap: 1.5rem;
     column-gap: 1.5rem;
   }
 

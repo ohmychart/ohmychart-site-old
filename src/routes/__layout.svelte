@@ -12,7 +12,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="description" content="" />
+  <meta name="description" content="Data visualizations on economic and historical topics." />
   <meta name="author" content="Ohmychart.com" />
   <link
     rel="apple-touch-icon"

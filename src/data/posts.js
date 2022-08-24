@@ -1,7 +1,14 @@
 import fsuCover from "$svg/fsu-fwt-cover.svg";
 import rusTradeCover from "$svg/rus-trade-cover.svg";
+import fragilityCover from '$svg/fragility-cover.svg';
 
 export const posts = [
+  {
+    title: "Energy Resources & State Fragility",
+    description: "Visualization of the world's oil and gas reserves in terms of vulnerability expressed through the Fragile State Index levels",
+    cover: fragilityCover,
+    url: "/energy-and-state-fragility",
+  },
   {
     title: "Economic development of the former USSR and Warsaw Pact countries",
     description: "Visualizing first 30 years of the post-Soviet economy development. Which countries have performed best and worst?",
